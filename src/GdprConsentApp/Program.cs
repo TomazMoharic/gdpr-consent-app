@@ -15,7 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.IncludeXmlComments(Path.Combine("bin", "Debug", "GdprConsentApp.xml"));
+});
 
 // Mysql DB
 builder.Services.AddDbContext<MysqlDbContext>(options =>
@@ -24,10 +27,6 @@ builder.Services.AddDbContext<MysqlDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-// builder.Logging.ClearProviders();
-// builder.Logging.AddConsole();
-// builder.Logging.AddDebug();
-
 builder.Services.AddTransient<IConsentsService, ConsentsService>();
 builder.Services.AddTransient<IUsersService, UsersService>();
 builder.Services.AddTransient<IUsersConsentsService, UserConsentsService>();
@@ -35,6 +34,8 @@ builder.Services.AddTransient<IUsersRepository, UsersRepository>();
 builder.Services.AddTransient<IConsentsRepository, ConsentsRepository>();
 builder.Services.AddTransient<IUsersConsentsRepository, UsersConsentsRepository>();
 builder.Services.AddTransient(typeof(ILoggerAdapter<>), typeof(LoggerAdapter<>));
+
+builder.Services.AddScoped<DatabaseInitializer>();
 
 var app = builder.Build();
 
@@ -45,13 +46,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Log.Logger = new LoggerConfiguration()
-//     .MinimumLevel.Debug()
-//     .Enrich.FromLogContext()
-//     .WriteTo.Console()
-//     .WriteTo.File("Logs/logs.txt", rollingInterval: RollingInterval.Day)
-//     .CreateLogger();
-
 app.UseMiddleware<CustomExceptionMiddleware>();
 
 app.UseHttpsRedirection();
@@ -59,5 +53,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// var databaseInitializer = app.Services.GetRequiredService<DatabaseInitializer>();
+//     
+// databaseInitializer.InitializeDb();
 
 app.Run();

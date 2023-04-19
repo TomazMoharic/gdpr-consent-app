@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdprConsentApp", "src\GdprC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdprConsentApp.Tests.Unit", "test\GdprConsentApp.Tests.Unit\GdprConsentApp.Tests.Unit.csproj", "{4CC06072-7E2E-4EBC-AF3F-352E95C806BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdprConsentApp.Tests.Integration", "test\GdprConsentApp.Tests.Integration\GdprConsentApp.Tests.Integration.csproj", "{A4BF3DF0-463A-472C-9861-114E28B561D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,9 +24,14 @@ Global
 		{4CC06072-7E2E-4EBC-AF3F-352E95C806BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CC06072-7E2E-4EBC-AF3F-352E95C806BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CC06072-7E2E-4EBC-AF3F-352E95C806BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4BF3DF0-463A-472C-9861-114E28B561D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4BF3DF0-463A-472C-9861-114E28B561D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4BF3DF0-463A-472C-9861-114E28B561D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4BF3DF0-463A-472C-9861-114E28B561D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{946CF594-AB06-4D3F-9F89-FDC7ECECEB55} = {F93C0E6A-BC10-4818-8D24-90A14E9944A8}
 		{4CC06072-7E2E-4EBC-AF3F-352E95C806BA} = {DE92E908-5DD4-4BC1-B968-BA0B2DB62166}
+		{A4BF3DF0-463A-472C-9861-114E28B561D6} = {DE92E908-5DD4-4BC1-B968-BA0B2DB62166}
 	EndGlobalSection
 EndGlobal
